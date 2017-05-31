@@ -1,0 +1,8 @@
+version: "3"
+services:
+  build:
+    image: rest4hub/golang-glide
+    working_dir: /go/src/github.com/gin-tonic
+    volumes:
+      - $PWD:/go/src/github.com/gin-tonic
+    command: bash -c './docker/scripts/runBuild.sh'

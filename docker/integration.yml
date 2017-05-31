@@ -1,0 +1,22 @@
+version: "2.1"
+services:
+  gin-tonic:
+    image: billyteves/alpine-golang-glide
+    working_dir: /go/src/github.com/gin-tonic
+    volumes:
+      - $PWD:/go/src/github.com/gin-tonic
+    command: bash -c "go run pkg/api/main/main.go"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://gin-tonic:8080/ping"]
+      interval: 3s
+      timeout: 30s
+      retries: 4
+  integration:
+    image: billyteves/alpine-golang-glide
+    working_dir: /go/src/github.com/gin-tonic
+    volumes:
+      - $PWD:/go/src/github.com/gin-tonic
+    depends_on:
+       gin-tonic:
+         condition: service_healthy
+    command: bash -c "./docker/scripts/runIntegrationTests.sh"

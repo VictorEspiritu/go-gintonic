@@ -1,0 +1,17 @@
+package: github.com/gin-tonic
+import:
+- package: github.com/emicklei/go-restful
+  version: 2.2.0
+- package: gopkg.in/yaml.v2
+  version: v2
+- package: github.com/emicklei/go-restful-swagger12
+  version: 1.0.1
+testImport:
+- package: github.com/onsi/gomega
+  version: ^1.1.0
+- package: github.com/go-resty/resty
+  version: v0.12
+- package: github.com/onsi/ginkgo/ginkgo
+  version: v1.3.1
+- package: github.com/stretchr/testify
+  version: v1.1.4

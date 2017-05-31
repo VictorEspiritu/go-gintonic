@@ -1,0 +1,55 @@
+swagger: "2.0"
+info:
+  description: "Gin Tonic services which will serve us drinks which will leave you amaze"
+  version: "1.0.0"
+  title: "Gin Tonic Service"
+  termsOfService: "http://bbva.com/terms/"
+  contact:
+    email: "francisco.delucas@bbva.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "gin-tonic"
+basePath: "/"
+tags:
+- name: "healthchecks"
+  description: "Everything about healthchecks"
+- name: "gintonics"
+  description: "Everything about gintonics"
+  externalDocs:
+    description: "Find out more about gin tonics"
+    url: "http://gintonics.io"
+schemes:
+- "http"
+paths:
+  /ping:
+    get:
+      tags:
+      - "healthchecks"
+      summary: "Checks status of the service"
+      description: "Checks if the service it self is healthy"
+      operationId: "findServiceHealth"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        200:
+          description: "Service is alive"
+        400:
+          description: "Service is down"
+  /gintonic/inventory:
+    get:
+      tags:
+      - "gintonics"
+      summary: "Returns gintonic inventories by status"
+      description: "Returns a map of status codes to quantities"
+      operationId: "getInventory"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

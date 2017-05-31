@@ -1,0 +1,10 @@
+version: "3"
+services:
+  deploy:
+    image: billyteves/alpine-golang-glide
+    working_dir: /go/src/github.com/gin-tonic
+    ports:
+      - "8080:8080"
+    volumes:
+      - $PWD:/go/src/github.com/gin-tonic
+    command: bash -c "go run pkg/api/main/main.go"
